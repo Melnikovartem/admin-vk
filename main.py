@@ -8,5 +8,6 @@ while True:
     posts_now = vki.get_posts(config._id)
     if posts < posts_now:
         posts = posts_now
-        data_base(vki.get_online(config._id))
+        data_base.new_write(vki.get_online(config._id))
     time.sleep(60)
+
