@@ -1,7 +1,14 @@
 import time
+import data_base
+import vki
+import config
 
-url_
+posts = vki.get_posts(config._id)
 while True:
+    posts_now = vki.get_posts(config._id)
+    if posts < posts_now:
+        print("i")
+        posts = posts_now
+        vki.get_online(config._id)
+    
     time.sleep(60)
-    print("i")
-    data = loads(urlopen(url_).read().decode('utf8'))
