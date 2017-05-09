@@ -20,6 +20,8 @@ def new_write(online):
     con.commit()
     con.close()
 
+    update_inf()
+
 def update_inf():
     
     con = sqlite3.connect(config.database)
@@ -60,8 +62,15 @@ def update_inf():
 
     con.commit()
     con.close()
-        
+
+    return 0
 
 def get_inf():
+    con = sqlite3.connect(config.database)
+    cur = con.cursor()
     
-    pass
+    cur.execute("select * from "+ config.users_table)
+    now = cur.fetchall()
+    
+    con.close()
+    return now
