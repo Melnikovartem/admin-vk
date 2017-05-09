@@ -68,9 +68,20 @@ def update_inf():
 def get_inf():
     con = sqlite3.connect(config.database)
     cur = con.cursor()
+
+    cur.execute("select * from "+ config.post_table)
+    _all = cur.fetchall()
+
+    if _all == 0:
+        _all = 1
     
     cur.execute("select * from "+ config.users_table)
     now = cur.fetchall()
     
     con.close()
-    return now
+
+    ans = []
+    for i in now:
+        proc = str(round(100*i[2]/len(_all)))
+        ans.append({"href":"https://vk.com/id" + str(i[0]),"proc_need": "width: " + proc + "%;","name":i[1], "proc": proc + "%"})
+    return ans
