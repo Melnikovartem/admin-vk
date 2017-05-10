@@ -6,7 +6,7 @@ import tornado.web
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         admin = data_base.get_inf()
-        self.render('index.html', id_ = "https://vk.com/club" + config._id, admin = admin, x = "width: 75%;")
+        self.render('index.html', id_ = "https://vk.com/club" + config._id, admin = admin)
 
 
 

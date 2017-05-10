@@ -22,6 +22,8 @@ def new_write(online):
 
     update_inf()
 
+    return 0
+
 def update_inf():
     
     con = sqlite3.connect(config.database)

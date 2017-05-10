@@ -9,9 +9,9 @@
             Кто админ <a href={{id_}}>Паблика</a>?
         </h3>
         {% for i in admin %}
-            <h5><a href={{i["href"]}}>{{i["name"]}}</a> -> {{i["proc"]}}</h5>
+            <h5><a href={{i['href']}}>{{i["name"]}}</a> -> {{i["proc"]}}</h5>
             <div class="progress">
-              <div class="progress-bar" style={{}}></div>
+              <div class="progress-bar" style="{% raw i['proc_need'] %}"></div>
             </div>
             <br>
         {% end %}
