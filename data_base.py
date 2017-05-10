@@ -9,8 +9,6 @@ def new_write(online):
     online_add =""
     for i in online:
         online_add+="</Art_*"+i['last_name']+" "+i['first_name']+"<.>Mel/"+str(i['uid'])
-    print(online)
-    print(online_add)
     put_into.append(strftime('%H:%M:%S %D'))
     put_into.append(online_add)
     put_into.append(0)
@@ -77,13 +75,15 @@ def get_inf():
     if _all == 0:
         _all = 1
     
-    cur.execute("select * from "+ config.users_table)
+    cur.execute("select * from "+ config.users_table + " ORDER BY Number")
     now = cur.fetchall()
+    now.reverse()
+    now = now[:10]
     
     con.close()
 
     ans = []
     for i in now:
-        proc = str(round(100*i[2]/len(_all)))
+        proc = str(round(100*i[2]/len(_all), 3))
         ans.append({"href":"https://vk.com/id" + str(i[0]),"proc_need": "width: " + proc + "%;","name":i[1], "proc": proc + "%"})
     return ans

@@ -8,8 +8,9 @@
         <h3>
             Кто админ <a href={{id_}}>Паблика</a>?
         </h3>
+        <h4>Топ-10 наиболее вероятных админов</h4>
         {% for i in admin %}
-            <h5><a href={{i['href']}}>{{i["name"]}}</a> -> {{i["proc"]}}</h5>
+            <h5><a href={{i['href']}}>{{admin.index(i) + 1}}) {{i["name"]}}</a> -> {{i["proc"]}}</h5>
             <div class="progress">
               <div class="progress-bar" style="{% raw i['proc_need'] %}"></div>
             </div>
